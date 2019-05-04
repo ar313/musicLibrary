@@ -9,20 +9,21 @@ import android.widget.EditText;
 
 public class SongDetailActivity extends AppCompatActivity {
 
-    EditText songName = findViewById(R.id.songdetailName);
-    EditText songAuthor = findViewById(R.id.songdetailAuthor);
+    EditText songName;// = findViewById(R.id.songdetailName);
+    EditText songAuthor;// = findViewById(R.id.songdetailAuthor);
     //EditText songYear = findViewById(R.id.songdetailYear);
-    EditText songDuration = findViewById(R.id.songdetailDuration);
-    EditText songGenre = findViewById(R.id.songdetailGenre);
-    EditText songAlbum = findViewById(R.id.songdetailAlbum);
-    EditText songDescription = findViewById(R.id.songdetailDescription);
+    EditText songDuration;// = findViewById(R.id.songdetailDuration);
+    EditText songGenre;// = findViewById(R.id.songdetailGenre);
+    EditText songAlbum;//= findViewById(R.id.songdetailAlbum);
+    EditText songDescription;// = findViewById(R.id.songdetailDescription);
 
-    Button buttonSave = findViewById(R.id.songdetailSave);
-    Button buttonEdit = findViewById(R.id.songdetailEdit);
+    Button buttonSave;// = findViewById(R.id.songdetailSave);
+    Button buttonEdit;// = findViewById(R.id.songdetailEdit);
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.songdetail);
 
         final MusicCollection songs = (MusicCollection)getIntent().getSerializableExtra("collection");
 
@@ -30,6 +31,17 @@ public class SongDetailActivity extends AppCompatActivity {
 
 
         final Music song = (Music)getIntent().getSerializableExtra("song");
+
+        songName = findViewById(R.id.songdetailName);
+        songAuthor = findViewById(R.id.songdetailAuthor);
+        //EditText songYear = findViewById(R.id.songdetailYear);
+        songDuration = findViewById(R.id.songdetailDuration);
+        songGenre = findViewById(R.id.songdetailGenre);
+        songAlbum = findViewById(R.id.songdetailAlbum);
+        songDescription = findViewById(R.id.songdetailDescription);
+
+        buttonSave = findViewById(R.id.songdetailSave);
+        buttonEdit = findViewById(R.id.songdetailEdit);
 
         if(song.getId() != 0)
         {

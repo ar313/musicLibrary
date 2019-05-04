@@ -89,6 +89,8 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
                 myIntent.putExtra("song", song);
                 myIntent.putExtra("edit", false);
                 myIntent.putExtra("collection", mCol);
+
+                v.getContext().startActivity(myIntent);
             }
         }
     }

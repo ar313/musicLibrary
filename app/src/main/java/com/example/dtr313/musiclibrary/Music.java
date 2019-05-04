@@ -12,7 +12,15 @@ public class Music implements Serializable {
     private int duration;
     private String description;
 
-    Music(){}
+    Music(){
+        this.id = 0;
+        this.mName = "";
+        this.mArtist = "";
+        this.mAlbum = "";
+        this.genre = "";
+        this.duration = 0;
+        this.description = "";
+    }
 
     Music(int id, String mName, String mArtist, String mAlbum, String genre, int duration, String description) {
 

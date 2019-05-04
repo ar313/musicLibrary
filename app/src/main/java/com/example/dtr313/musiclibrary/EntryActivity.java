@@ -45,10 +45,12 @@ public class EntryActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent myIntent = new Intent (EntryActivity.this, SongDetailActivity.class);
 
+                Music song = new Music();
+
 
                 myIntent.putExtra("edit", true);
                 myIntent.putExtra("collection", songs);
-                myIntent.putExtra("song", new Music());
+                myIntent.putExtra("song", song);
 
                 startActivity(myIntent);
             }
