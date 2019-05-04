@@ -19,9 +19,9 @@ public class EntryActivity extends AppCompatActivity {
 
         RecyclerView recycler = findViewById(R.id.recycler);
 
-        Database db = new Database();
+        //Database db = new Database();
 
-        final MusicCollection songs = new MusicCollection(db.load());
+        final MusicCollection songs = new MusicCollection();
 
         Adapter songAdapter = new Adapter(songs);
 
