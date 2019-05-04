@@ -14,6 +14,8 @@ public class MusicCollection {
 
     public void add(Music music){
         musicArrayList.add(music);
+        Database db = new Database();
+        db.addMusicToDB(music);
     }
 
     public ArrayList<Music> searchByArtist( String artist ) {

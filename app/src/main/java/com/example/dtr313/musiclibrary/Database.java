@@ -6,14 +6,13 @@ import android.database.sqlite.SQLiteDatabase;
 
 import java.util.ArrayList;
 
-public class Database {
-    private String musicDBName;
-    private SQLiteDatabase musicDB;
-    Database(){}
 
-    Database(String musicDBName) {
-        this.musicDBName = musicDBName;
-        this.musicDB = SQLiteDatabase.openOrCreateDatabase(musicDBName, null,null);
+public class Database {
+    private String musicDBName = "MusicLibrary";
+    private SQLiteDatabase musicDB;
+
+    Database() {
+        this.musicDB = SQLiteDatabase.openOrCreateDatabase(this.musicDBName, null,null);
 
         String query = "CREATE TABLE IF NOT EXISTS MusicLibrary(id VARCHAR(32), " +
                 "name VARCHAR(32), " +
@@ -26,7 +25,7 @@ public class Database {
         musicDB.execSQL(query);               //create table
     }
 
-    public ArrayList<Music> load( String dbName ) {
+    public ArrayList<Music> load() {
         ArrayList<Music> allMusic = new ArrayList<Music>();
 
         Cursor ptr = musicDB.rawQuery("Select * FROM MusicLibrary", null);
