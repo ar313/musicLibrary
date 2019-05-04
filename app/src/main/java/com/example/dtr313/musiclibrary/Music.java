@@ -6,17 +6,19 @@ public class Music {
     private String mName;
     private String mArtist;
     private String mAlbum;
+    private String genre;
     private int duration;
     private String description;
 
     Music(){}
 
-    Music(String id, String mName, String mArtist, String mAlbum, int duration, String description) {
+    Music(String id, String mName, String mArtist, String mAlbum, String genre, int duration, String description) {
 
         this.id = id;
         this.mName = mName;
         this.mArtist = mArtist;
         this.mAlbum = mAlbum;
+        this.genre = genre;
         this.duration = duration;
         this.description = description;
     }
@@ -51,6 +53,14 @@ public class Music {
 
     public void setAlbum(String mAlbum) {
         this.mAlbum = mAlbum;
+    }
+
+    public String getGenre() {
+        return genre;
+    }
+
+    public void setGenre(String genre) {
+        this.genre = genre;
     }
 
     public int getDuration() {

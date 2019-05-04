@@ -11,6 +11,7 @@ public class MusicCollection {
     MusicCollection(ArrayList<Music> musicArrayList) {
         this.musicArrayList = musicArrayList;
     }
+
     public void add(Music music){
         musicArrayList.add(music);
     }
