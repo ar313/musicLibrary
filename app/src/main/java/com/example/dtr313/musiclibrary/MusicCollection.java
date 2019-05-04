@@ -1,9 +1,10 @@
 package com.example.dtr313.musiclibrary;
 
+import java.io.Serializable;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 
-public class MusicCollection {
+public class MusicCollection implements Serializable {
     private ArrayList<Music> musicArrayList = new ArrayList<Music>();
 
     MusicCollection(){
