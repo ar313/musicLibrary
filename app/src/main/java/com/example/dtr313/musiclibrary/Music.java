@@ -1,6 +1,6 @@
 package com.example.dtr313.musiclibrary;
 
-public class music {
+public class Music {
 
     private String mName;
     private String mArtist;
@@ -8,9 +8,9 @@ public class music {
     private int duration;
     private String description;
 
-    music(){}
+    Music(){}
 
-    music(String mName, String mArtist, String mAlbum, int duration, String description) {
+    Music(String mName, String mArtist, String mAlbum, int duration, String description) {
 
         this.mName = mName;
         this.mArtist = mArtist;
