@@ -37,7 +37,7 @@ public class Database {
         int cAlbum = ptr.getColumnIndex("album");
         int cGenre = ptr.getColumnIndex("genre");
         int cDuration = ptr.getColumnIndex("duration");
-        int cDescripton = ptr.getColumnIndex("description");
+        int cDescription = ptr.getColumnIndex("description");
 
         ptr.moveToFirst();
 
@@ -49,11 +49,26 @@ public class Database {
                 String Album = ptr.getString(cAlbum);
                 String Genre = ptr.getString(cGenre);
                 int duration = ptr.getInt(cDuration);
-                String description = ptr.getString(cDescripton);
+                String description = ptr.getString(cDescription);
 
                 allMusic.add( new Music(ID, Name, Artist, Album, Genre, duration, description) );
             } while(ptr.moveToNext());
         }
         return allMusic;
+    }
+
+    public void addMusicToDB(Music music) {
+
+        String query = "INSERT INTO MusicLibrary (id, name, artist, album, genre, duration, description)" +
+                "VALUES ('"+
+                music.getId() + "','" +
+                music.getName() + "','" +
+                music.getArtist() + "','" +
+                music.getAlbum() + "','" +
+                music.getGenre() + "'," +
+                music.getDuration() + ",'" +
+                music.getDescription() + "');";
+
+        musicDB.execSQL(query);
     }
 }
