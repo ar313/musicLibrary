@@ -78,4 +78,8 @@ public class Music {
     public void setDescription(String description) {
         this.description = description;
     }
+
+    public String getLength() {
+        return "" + (duration/60) + ":" + (duration%60);
+    }
 }
