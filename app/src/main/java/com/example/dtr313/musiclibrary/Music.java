@@ -4,17 +4,18 @@ import java.io.Serializable;
 
 public class Music implements Serializable {
 
-    private String id;
+    private int id;
     private String mName;
     private String mArtist;
     private String mAlbum;
     private String genre;
     private int duration;
     private String description;
+    private int year;
 
     Music(){}
 
-    Music(String id, String mName, String mArtist, String mAlbum, String genre, int duration, String description) {
+    Music(int id, String mName, String mArtist, String mAlbum, String genre, int duration, String description) {
 
         this.id = id;
         this.mName = mName;
@@ -25,11 +26,11 @@ public class Music implements Serializable {
         this.description = description;
     }
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 

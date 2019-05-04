@@ -1,6 +1,5 @@
 package com.example.dtr313.musiclibrary;
 
-import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
@@ -14,7 +13,7 @@ public class Database {
     Database() {
         this.musicDB = SQLiteDatabase.openOrCreateDatabase(this.musicDBName, null,null);
 
-        String query = "CREATE TABLE IF NOT EXISTS MusicLibrary(id VARCHAR(32), " +
+        String query = "CREATE TABLE IF NOT EXISTS MusicLibrary(id INT, " +
                 "name VARCHAR(32), " +
                 "artist VARCHAR(32), " +
                 "album VARCHAR(32), " +
@@ -42,7 +41,7 @@ public class Database {
 
         if ( ptr != null ) {
             do {
-                String ID = ptr.getString(cID);
+                int ID = ptr.getInt(cID);
                 String Name = ptr.getString(cName);
                 String Artist = ptr.getString(cArtist);
                 String Album = ptr.getString(cAlbum);
@@ -59,8 +58,8 @@ public class Database {
     public void addMusicToDB(Music music) {
 
         String query = "INSERT INTO MusicLibrary (id, name, artist, album, genre, duration, description)" +
-                "VALUES ('"+
-                music.getId() + "','" +
+                "VALUES ("+
+                music.getId() + ",'" +
                 music.getName() + "','" +
                 music.getArtist() + "','" +
                 music.getAlbum() + "','" +
@@ -80,7 +79,7 @@ public class Database {
                 ", genre = " + music.getGenre() +
                 ", duration = " + music.getDuration() +
                 ", description = " + music.getDescription() +
-                " WHERE  id= " + music.getId() + ";";
+                " WHERE  id = " + music.getId() + ";";
 
         musicDB.execSQL(query);
     }
