@@ -1,6 +1,8 @@
 package com.example.dtr313.musiclibrary;
 
-public class Music {
+import java.io.Serializable;
+
+public class Music implements Serializable {
 
     private String id;
     private String mName;
