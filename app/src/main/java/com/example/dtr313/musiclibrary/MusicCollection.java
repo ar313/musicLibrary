@@ -3,6 +3,7 @@ package com.example.dtr313.musiclibrary;
 import java.io.Serializable;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Iterator;
 
 public class MusicCollection implements Serializable {
     private ArrayList<Music> musicArrayList = new ArrayList<Music>();
@@ -72,5 +73,16 @@ public class MusicCollection implements Serializable {
 
     public void setMusicArrayList(ArrayList<Music> musicArrayList) {
         this.musicArrayList = musicArrayList;
+    }
+
+    public void editMusic(Music musicToEdit) {
+        for (int i = 0; i< this.musicArrayList.size(); i++ ) {
+            if ( this.musicArrayList.get(i).getId() ==  musicToEdit.getId() ) {
+                this.musicArrayList.set(i, musicToEdit);
+                Database db = new Database();
+                db.editMusic(musicToEdit);
+                break;
+            }
+        }
     }
 }
