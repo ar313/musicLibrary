@@ -1,17 +1,33 @@
 package com.example.dtr313.musiclibrary;
 
+import android.Manifest;
+import android.content.Context;
+import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteOpenHelper;
+import android.os.Environment;
+import android.support.annotation.Nullable;
+import android.support.v4.content.ContextCompat;
 
+import java.io.File;
 import java.util.ArrayList;
 
 
-public class Database {
-    private String musicDBName = "MusicLibrary";
-    private SQLiteDatabase musicDB;
+public class Database extends SQLiteOpenHelper {
+    private static String musicDBName = "MusicLibrary.db";
 
-    Database() {
-        this.musicDB = SQLiteDatabase.openOrCreateDatabase(this.musicDBName, null,null);
+    private static int DATABASE_VERSION = 1;
+
+    Database(Context context) {
+        super(context, Environment.getExternalStorageDirectory() + File.separator + "MusicLibrary/db/"
+                + File.separator
+                + musicDBName, null, DATABASE_VERSION);
+
+    }
+
+    @Override
+    public void onCreate(SQLiteDatabase db) {
 
         String query = "CREATE TABLE IF NOT EXISTS MusicLibrary(id INT, " +
                 "name VARCHAR(32), " +
@@ -21,12 +37,18 @@ public class Database {
                 "duration INT," +
                 "description VARCHAR(128));";
 
-        musicDB.execSQL(query);               //create table
+        db.execSQL(query);               //create table
+    }
+
+    @Override
+    public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
+
     }
 
     public ArrayList<Music> load() {
         ArrayList<Music> allMusic = new ArrayList<Music>();
 
+        SQLiteDatabase musicDB = this.getReadableDatabase();
         Cursor ptr = musicDB.rawQuery("Select * FROM MusicLibrary", null);
 
         int cID = ptr.getColumnIndex("id");
@@ -57,6 +79,8 @@ public class Database {
 
     public void addMusicToDB(Music music) {
 
+        SQLiteDatabase musicDB = this.getWritableDatabase();
+
         String query = "INSERT INTO MusicLibrary (id, name, artist, album, genre, duration, description)" +
                 "VALUES ("+
                 music.getId() + ",'" +
@@ -71,6 +95,8 @@ public class Database {
     }
 
     public void editMusic(Music music) {
+
+        SQLiteDatabase musicDB = this.getWritableDatabase();
 
         String query ="UPDATE MusicLibrary SET " +
                 "name = " + music.getName() +
