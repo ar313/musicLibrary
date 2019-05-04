@@ -8,8 +8,7 @@ import java.util.Iterator;
 public class MusicCollection implements Serializable {
     private ArrayList<Music> musicArrayList = new ArrayList<Music>();
 
-    MusicCollection(){
-        Database db = new Database();
+    MusicCollection(Database db){
         this.musicArrayList = db.load();
     }
 
@@ -19,8 +18,6 @@ public class MusicCollection implements Serializable {
 
     public void add(Music music){
         musicArrayList.add(music);
-        Database db = new Database();
-        db.addMusicToDB(music);
     }
 
     public ArrayList<Music> searchByGenre( String genre ) {
@@ -79,8 +76,6 @@ public class MusicCollection implements Serializable {
         for (int i = 0; i< this.musicArrayList.size(); i++ ) {
             if ( this.musicArrayList.get(i).getId() ==  musicToEdit.getId() ) {
                 this.musicArrayList.set(i, musicToEdit);
-                Database db = new Database();
-                db.editMusic(musicToEdit);
                 break;
             }
         }
