@@ -71,6 +71,17 @@ public class SongDetailActivity extends AppCompatActivity {
                     songs.add(song);
                 }
 
+                else
+                {
+                    song.setName(songName.getText().toString());
+                    song.setArtist(songAuthor.getText().toString());
+                    song.setGenre(songGenre.getText().toString());
+                    song.setDuration(Integer.parseInt(songDuration.getText().toString()));
+                    song.setDescription(songDescription.getText().toString());
+
+                    songs.editMusic(song);
+                }
+
             }
         });
 
