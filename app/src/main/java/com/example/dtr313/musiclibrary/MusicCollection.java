@@ -6,7 +6,10 @@ import java.util.ArrayList;
 public class MusicCollection {
     private ArrayList<Music> musicArrayList = new ArrayList<Music>();
 
-    MusicCollection(){}
+    MusicCollection(){
+        Database db = new Database();
+        this.musicArrayList = db.load();
+    }
 
     MusicCollection(ArrayList<Music> musicArrayList) {
         this.musicArrayList = musicArrayList;
