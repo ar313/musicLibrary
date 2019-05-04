@@ -11,7 +11,6 @@ public class Music implements Serializable {
     private String genre;
     private int duration;
     private String description;
-    private int year;
 
     Music(){}
 
