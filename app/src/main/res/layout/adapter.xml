@@ -1,29 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="wrap_content"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
-    <EditText
-        android:id="@+id/songname"
+    <TextView
+        android:id="@+id/songName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:ems="10"
-        android:inputType="textPersonName" />
+        android:layout_weight="1" />
 
-    <EditText
-        android:id="@+id/songauthor"
+    <TextView
+        android:id="@+id/songAuthor"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:ems="10"
-        android:inputType="textPersonName" />
+        android:layout_weight="1" />
 
-    <EditText
-        android:id="@+id/songgenre"
+    <TextView
+        android:id="@+id/songGenre"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:ems="10"
-        android:inputType="textPersonName" />
+        android:layout_weight="1" />
 </LinearLayout>
