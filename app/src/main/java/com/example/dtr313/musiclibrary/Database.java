@@ -70,4 +70,18 @@ public class Database {
 
         musicDB.execSQL(query);
     }
+
+    public void editMusic(Music music) {
+
+        String query ="UPDATE MusicLibrary SET " +
+                "name = " + music.getName() +
+                ", artist = " + music.getArtist() +
+                ", album = " + music.getAlbum() +
+                ", genre = " + music.getGenre() +
+                ", duration = " + music.getDuration() +
+                ", description = " + music.getDescription() +
+                " WHERE  id= " + music.getId() + ";";
+
+        musicDB.execSQL(query);
+    }
 }

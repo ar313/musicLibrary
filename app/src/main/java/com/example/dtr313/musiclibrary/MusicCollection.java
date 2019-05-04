@@ -22,6 +22,17 @@ public class MusicCollection implements Serializable {
         db.addMusicToDB(music);
     }
 
+    public ArrayList<Music> searchByGenre( String genre ) {
+        ArrayList<Music> foundMusic = new ArrayList<Music>();
+        for (Music music : this.musicArrayList ) {
+            if ( music.getGenre().toLowerCase().contains( genre.toLowerCase() ) ) {
+                foundMusic.add(music);
+            }
+        }
+
+        return foundMusic;
+    }
+
     public ArrayList<Music> searchByArtist( String artist ) {
         ArrayList<Music> foundMusic = new ArrayList<Music>();
         for (Music music : this.musicArrayList ) {
@@ -36,7 +47,7 @@ public class MusicCollection implements Serializable {
     public ArrayList<Music> searchByAlbum( String album ) {
         ArrayList<Music> foundMusic = new ArrayList<Music>();
         for (Music music : this.musicArrayList ) {
-            if ( music.getArtist().toLowerCase().contains( album.toLowerCase() ) ) {
+            if ( music.getAlbum().toLowerCase().contains( album.toLowerCase() ) ) {
                 foundMusic.add(music);
             }
         }
@@ -47,7 +58,7 @@ public class MusicCollection implements Serializable {
     public ArrayList<Music> searchBySong( String song ) {
         ArrayList<Music> foundMusic = new ArrayList<Music>();
         for (Music music : this.musicArrayList ) {
-            if ( music.getArtist().toLowerCase().contains( song.toLowerCase() ) ) {
+            if ( music.getName().toLowerCase().contains( song.toLowerCase() ) ) {
                 foundMusic.add(music);
             }
         }
