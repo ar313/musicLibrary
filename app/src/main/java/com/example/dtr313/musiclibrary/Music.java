@@ -82,4 +82,8 @@ public class Music {
     public String getLength() {
         return "" + (duration/60) + ":" + (duration%60);
     }
+
+    public static int timeToDuration(int minutes, int seconds ) {
+        return minutes*60 + seconds;
+    }
 }
