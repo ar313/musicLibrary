@@ -2,6 +2,7 @@ package com.example.dtr313.musiclibrary;
 
 public class Music {
 
+    private String id;
     private String mName;
     private String mArtist;
     private String mAlbum;
@@ -10,8 +11,9 @@ public class Music {
 
     Music(){}
 
-    Music(String mName, String mArtist, String mAlbum, int duration, String description) {
+    Music(String id, String mName, String mArtist, String mAlbum, int duration, String description) {
 
+        this.id = id;
         this.mName = mName;
         this.mArtist = mArtist;
         this.mAlbum = mAlbum;
@@ -19,6 +21,13 @@ public class Music {
         this.description = description;
     }
 
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
 
     public String getName() {
         return mName;
