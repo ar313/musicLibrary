@@ -13,6 +13,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.Button;
+import android.widget.SearchView;
 
 import java.io.File;
 import java.io.Serializable;
@@ -29,7 +30,7 @@ public class EntryActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_entry);
 
-        RecyclerView recycler = findViewById(R.id.recycler);
+        final RecyclerView recycler = findViewById(R.id.recycler);
 
         File f = new File(Environment.getExternalStorageDirectory(), "/MusicLibrary/db");
         if (!f.exists()) {
@@ -40,7 +41,7 @@ public class EntryActivity extends AppCompatActivity {
 
         final MusicCollection songs = new MusicCollection(db);
 
-        Adapter songAdapter = new Adapter(songs);
+        final Adapter songAdapter = new Adapter(songs);
 
 
         //db.addMusicToDB(new Music(2,"Despacito","Lois Fancy", "Spanish", "Country", 300, "Alexa Play"));
@@ -106,6 +107,50 @@ public class EntryActivity extends AppCompatActivity {
                 });
 
                 builder.show();
+            }
+        });
+
+        SearchView sv = findViewById(R.id.searchView);
+
+        sv.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String s) {
+
+                MusicCollection found;
+
+                switch(search[0])
+                {
+                    case 1:
+                        found = new MusicCollection(songs.searchBySong(s));
+                        break;
+                    case 2:
+                        found = new MusicCollection(songs.searchByArtist(s));
+                        break;
+                    case 3:
+                        found = new MusicCollection(songs.searchByGenre(s));
+                        break;
+                    case 4:
+                        found = new MusicCollection(songs.searchByAlbum(s));
+                        break;
+                    default:
+                        found = new MusicCollection(songs.searchBySong(s));
+                }
+
+                Adapter foundAdapter = new Adapter(found);
+
+                recycler.setAdapter(foundAdapter);
+                recycler.setLayoutManager(new LinearLayoutManager(EntryActivity.this));
+
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String s) {
+
+                recycler.setAdapter(songAdapter);
+                recycler.setLayoutManager(new LinearLayoutManager(EntryActivity.this));
+
+                return false;
             }
         });
 
