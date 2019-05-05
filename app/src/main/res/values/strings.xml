@@ -1,4 +1,10 @@
 <resources>
     <string name="app_name">musicLibrary</string>
     <string name="searchb">Search</string>
+    <string name="mName">Name</string>
+    <string name="mArtist">Artist</string>
+    <string name="mAlbum">Album</string>
+    <string name="mGenre">Genre</string>
+    <string name="mDuration">Duration</string>
+    <string name="mDescription">Description</string>
 </resources>
