@@ -41,10 +41,7 @@ public class EntryActivity extends AppCompatActivity {
         Adapter songAdapter = new Adapter(songs);
 
 
-        //db.addMusicToDB(new Music(1,"Despacito","Lois Fancy", "Spanish", "Country", 300, "Alexa Play"));
-
-
-
+        //db.addMusicToDB(new Music(2,"Despacito","Lois Fancy", "Spanish", "Country", 300, "Alexa Play"));
 
         recycler.setAdapter(songAdapter);
         recycler.setLayoutManager(new LinearLayoutManager(this));

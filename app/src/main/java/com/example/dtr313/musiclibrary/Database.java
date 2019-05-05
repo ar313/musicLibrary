@@ -99,13 +99,13 @@ public class Database extends SQLiteOpenHelper {
         SQLiteDatabase musicDB = this.getWritableDatabase();
 
         String query ="UPDATE MusicLibrary SET " +
-                "name = " + music.getName() +
-                ", artist = " + music.getArtist() +
-                ", album = " + music.getAlbum() +
-                ", genre = " + music.getGenre() +
-                ", duration = " + music.getDuration() +
-                ", description = " + music.getDescription() +
-                " WHERE  id = " + music.getId() + ";";
+                "name = '" + music.getName() +
+                "' , artist = '" + music.getArtist() +
+                "', album = '" + music.getAlbum() +
+                "', genre = '" + music.getGenre() +
+                "', duration = " + music.getDuration() +
+                ", description = '" + music.getDescription() +
+                "' WHERE  id = " + music.getId() + ";";
 
         musicDB.execSQL(query);
     }
