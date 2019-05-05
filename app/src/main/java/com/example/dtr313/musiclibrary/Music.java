@@ -13,13 +13,13 @@ public class Music implements Serializable {
     private String description;
 
     Music(){
-        this.id = 0;
-        this.mName = "";
-        this.mArtist = "";
-        this.mAlbum = "";
-        this.genre = "";
-        this.duration = 0;
-        this.description = "";
+        //this.id = 0;
+        //this.mName = "";
+       // this.mArtist = "";
+       // this.mAlbum = "";
+       // this.genre = "";
+      //  this.duration = 0;
+       // this.description = "";
     }
 
     Music(int id, String mName, String mArtist, String mAlbum, String genre, int duration, String description) {
@@ -33,9 +33,21 @@ public class Music implements Serializable {
         this.description = description;
     }
 
+    Music(Music song)
+    {
+        this.id = song.id;
+        this.mName = song.mName;
+        this.mArtist = song.mArtist;
+        this.mAlbum = song.mAlbum;
+        this.genre = song.genre;
+        this.duration = song.duration;
+        this.description = song.description;
+    }
+
     public int getId() {
         return id;
     }
+
 
     public void setId(int id) {
         this.id = id;

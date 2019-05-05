@@ -1,11 +1,13 @@
 package com.example.dtr313.musiclibrary;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 public class SongDetailActivity extends AppCompatActivity {
 
@@ -16,6 +18,7 @@ public class SongDetailActivity extends AppCompatActivity {
     EditText songGenre;// = findViewById(R.id.songdetailGenre);
     EditText songAlbum;//= findViewById(R.id.songdetailAlbum);
     EditText songDescription;// = findViewById(R.id.songdetailDescription);
+    TextView songID;
 
     Button buttonSave;// = findViewById(R.id.songdetailSave);
     Button buttonEdit;// = findViewById(R.id.songdetailEdit);
@@ -32,6 +35,10 @@ public class SongDetailActivity extends AppCompatActivity {
 
         final Music song = (Music)getIntent().getSerializableExtra("song");
 
+
+
+
+
         songName = findViewById(R.id.songdetailName);
         songAuthor = findViewById(R.id.songdetailAuthor);
         //EditText songYear = findViewById(R.id.songdetailYear);
@@ -39,9 +46,12 @@ public class SongDetailActivity extends AppCompatActivity {
         songGenre = findViewById(R.id.songdetailGenre);
         songAlbum = findViewById(R.id.songdetailAlbum);
         songDescription = findViewById(R.id.songdetailDescription);
+        //songID = findViewById(R.id.songdetailID);
 
         buttonSave = findViewById(R.id.songdetailSave);
         buttonEdit = findViewById(R.id.songdetailEdit);
+
+
 
         if(song.getId() != 0)
         {
@@ -52,6 +62,12 @@ public class SongDetailActivity extends AppCompatActivity {
             songGenre.setText(song.getGenre());
             songAlbum.setText(song.getAlbum());
             songDescription.setText(song.getDescription());
+           // songID.setText(String.valueOf(song.getId()));
+        }
+
+        else
+        {
+           // songID.setText(songs.getMusicArrayList().size());
         }
 
         if(isEdit)
@@ -71,6 +87,8 @@ public class SongDetailActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
+                Intent myIntent = new Intent();
+
                 if(isEdit)
                 {
                     song.setId(songs.getMusicArrayList().size() + 1);
@@ -80,7 +98,14 @@ public class SongDetailActivity extends AppCompatActivity {
                     song.setDuration(Integer.parseInt(songDuration.getText().toString()));
                     song.setDescription(songDescription.getText().toString());
 
-                    songs.add(song);
+                    //songs.add(song);
+
+                    myIntent.putExtra("song", song);
+                    myIntent.putExtra("edit", true);
+
+                    setResult(RESULT_OK, myIntent);
+
+                    finish();
                 }
 
                 else
@@ -91,7 +116,15 @@ public class SongDetailActivity extends AppCompatActivity {
                     song.setDuration(Integer.parseInt(songDuration.getText().toString()));
                     song.setDescription(songDescription.getText().toString());
 
-                    songs.editMusic(song);
+
+                    //songs.editMusic(song);
+
+                    myIntent.putExtra("song", song);
+                    myIntent.putExtra("edit", false);
+
+                    setResult(RESULT_OK, myIntent);
+
+                    finish();
                 }
 
             }

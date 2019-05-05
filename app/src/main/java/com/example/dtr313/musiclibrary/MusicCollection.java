@@ -16,6 +16,11 @@ public class MusicCollection implements Serializable {
         this.musicArrayList = musicArrayList;
     }
 
+    public void reload(Database db)
+    {
+        this.musicArrayList = db.load();
+    }
+
     public void add(Music music){
         musicArrayList.add(music);
     }
@@ -76,8 +81,26 @@ public class MusicCollection implements Serializable {
         for (int i = 0; i< this.musicArrayList.size(); i++ ) {
             if ( this.musicArrayList.get(i).getId() ==  musicToEdit.getId() ) {
                 this.musicArrayList.set(i, musicToEdit);
+
                 break;
             }
         }
+    }
+
+    public int geteditMusic(Music musicToEdit) {
+
+        int temp = -1;
+
+        for (int i = 0; i< this.musicArrayList.size(); i++ ) {
+            if ( this.musicArrayList.get(i).getId() ==  musicToEdit.getId() ) {
+                //this.musicArrayList.set(i, musicToEdit);
+
+                temp = i;
+
+                break;
+            }
+        }
+
+        return temp;
     }
 }

@@ -1,5 +1,6 @@
 package com.example.dtr313.musiclibrary;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.support.annotation.NonNull;
@@ -17,6 +18,8 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
 
     private MusicCollection mCol;
     private LayoutInflater mInflater;
+
+    final int REQUEST_CODE_EDIT = 14;
 
     public Adapter (MusicCollection data)
     {
@@ -81,7 +84,7 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
             int position = getAdapterPosition();
             if(position != RecyclerView.NO_POSITION)
             {
-                Music song = mCol.getMusicArrayList().get(position);
+                Music song = new Music(mCol.getMusicArrayList().get(position));
                 //Toast.makeText(context, songName.getText(),Toast.LENGTH_LONG).show();
 
                 Intent myIntent = new Intent(v.getContext(), SongDetailActivity.class);
@@ -90,7 +93,8 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
                 myIntent.putExtra("edit", false);
                 myIntent.putExtra("collection", mCol);
 
-                v.getContext().startActivity(myIntent);
+                ((Activity)v.getContext()).startActivityForResult(myIntent, REQUEST_CODE_EDIT);
+
             }
         }
     }
