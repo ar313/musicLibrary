@@ -1,10 +1,12 @@
 package com.example.dtr313.musiclibrary;
 
 import android.Manifest;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Environment;
 import android.support.v4.content.ContextCompat;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -61,6 +63,49 @@ public class EntryActivity extends AppCompatActivity {
                 myIntent.putExtra("song", song);
 
                 startActivityForResult(myIntent, REQUEST_CODE_ADD);
+            }
+        });
+
+        final int[] search = {1}; // 1 - name, 2 - artist, 3 - genre, 4 - album
+
+        final Button advSearch = findViewById(R.id.advsearch);
+
+        advSearch.setText(getString(R.string.advSearch) + "Song Name");
+
+        advSearch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String choices[] = {"Song name", "Artist", "Genre", "Album"};
+
+                AlertDialog.Builder builder = new AlertDialog.Builder(EntryActivity.this);
+                builder.setTitle("Search by: ");
+                builder.setItems(choices, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        search[0] = which + 1;
+
+                        switch(search[0])
+                        {
+                            case 1:
+                                advSearch.setText(getString(R.string.advSearch) + " Song Name");
+                                break;
+                            case 2:
+                                advSearch.setText(getString(R.string.advSearch) + " Artist");
+                                break;
+                            case 3:
+                                advSearch.setText(getString(R.string.advSearch) + " Genre");
+                                break;
+                            case 4:
+                                advSearch.setText(getString(R.string.advSearch) + " Album");
+                                break;
+                            default:
+                                advSearch.setText(getString(R.string.advSearch) + " Song Name");
+                        }
+
+                    }
+                });
+
+                builder.show();
             }
         });
 

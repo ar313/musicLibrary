@@ -12,27 +12,33 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
-        <EditText
-            android:id="@+id/searchbar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:ems="10"
-            android:inputType="textPersonName" />
-
         <Button
-            android:id="@+id/searchbutton"
+            android:id="@+id/advsearch"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="@string/searchb" />
+            android:maxWidth="30dp"
+            android:text="@string/advSearch" />
+
+        <Space
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+        <SearchView
+            android:id="@+id/searchView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+        </SearchView>
 
     </LinearLayout>
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recycler"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
+        android:layout_height="wrap_content"
+        android:minHeight="456dp">
 
     </android.support.v7.widget.RecyclerView>
 
@@ -40,6 +46,6 @@
         android:id="@+id/addbutton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Add Song" />
+        android:text="@string/addSong" />
 
 </LinearLayout>

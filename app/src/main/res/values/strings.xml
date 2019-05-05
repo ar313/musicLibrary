@@ -7,4 +7,6 @@
     <string name="mGenre">Genre</string>
     <string name="mDuration">Duration</string>
     <string name="mDescription">Description</string>
+    <string name="addSong">Add Song</string>
+    <string name="advSearch">Search by: </string>
 </resources>
