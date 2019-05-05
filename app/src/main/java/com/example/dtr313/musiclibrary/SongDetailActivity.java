@@ -97,6 +97,7 @@ public class SongDetailActivity extends AppCompatActivity {
                     song.setGenre(songGenre.getText().toString());
                     song.setDuration(Integer.parseInt(songDuration.getText().toString()));
                     song.setDescription(songDescription.getText().toString());
+                    song.setAlbum(songAlbum.getText().toString());
 
                     //songs.add(song);
 
@@ -115,6 +116,7 @@ public class SongDetailActivity extends AppCompatActivity {
                     song.setGenre(songGenre.getText().toString());
                     song.setDuration(Integer.parseInt(songDuration.getText().toString()));
                     song.setDescription(songDescription.getText().toString());
+                    song.setAlbum(songAlbum.getText().toString());
 
 
                     //songs.editMusic(song);

@@ -91,6 +91,9 @@ public class EntryActivity extends AppCompatActivity {
             Adapter songAdapter = new Adapter(songs);
 
             songAdapter.notifyItemInserted(songs.getMusicArrayList().size() - 1);
+
+            RecyclerView rv=findViewById(R.id.recycler);
+            rv.scrollToPosition(songs.getMusicArrayList().size()-1);
         }
 
         if (requestCode == REQUEST_CODE_EDIT && resultCode == RESULT_OK) {
@@ -103,6 +106,9 @@ public class EntryActivity extends AppCompatActivity {
             Adapter songAdapter = new Adapter(songs);
 
             songAdapter.notifyItemChanged(songs.geteditMusic(song));
+
+            RecyclerView rv=findViewById(R.id.recycler);
+            rv.scrollToPosition(songs.getMusicArrayList().size()-1);
         }
     }
 }
