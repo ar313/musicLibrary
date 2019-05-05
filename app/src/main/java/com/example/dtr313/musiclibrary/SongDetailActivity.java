@@ -89,13 +89,35 @@ public class SongDetailActivity extends AppCompatActivity {
 
                 Intent myIntent = new Intent();
 
+                int duration;
+
+                if(songDuration.getText().toString().contains(":"))
+                {
+                    String buf[] = songDuration.getText().toString().split(":");
+
+                    duration = Integer.parseInt(buf[0]) * 60 + Integer.parseInt(buf[1]);
+                }
+
+                else
+                {
+                    duration = Integer.parseInt(songDuration.getText().toString());
+                }
+
+
+
+
+
                 if(isEdit)
                 {
                     song.setId(songs.getMusicArrayList().size() + 1);
                     song.setName(songName.getText().toString());
                     song.setArtist(songAuthor.getText().toString());
                     song.setGenre(songGenre.getText().toString());
-                    song.setDuration(Integer.parseInt(songDuration.getText().toString()));
+
+
+                    song.setDuration(duration);
+
+
                     song.setDescription(songDescription.getText().toString());
                     song.setAlbum(songAlbum.getText().toString());
 
@@ -114,7 +136,7 @@ public class SongDetailActivity extends AppCompatActivity {
                     song.setName(songName.getText().toString());
                     song.setArtist(songAuthor.getText().toString());
                     song.setGenre(songGenre.getText().toString());
-                    song.setDuration(Integer.parseInt(songDuration.getText().toString()));
+                    song.setDuration(duration);
                     song.setDescription(songDescription.getText().toString());
                     song.setAlbum(songAlbum.getText().toString());
 
