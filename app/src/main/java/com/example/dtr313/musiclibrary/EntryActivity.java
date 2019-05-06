@@ -211,6 +211,11 @@ public class EntryActivity extends AppCompatActivity {
         }
 
         if (requestCode == REQUEST_CODE_EDIT && resultCode == RESULT_FIRST_USER) {
+
+            if ( db.load().size() <= 0) {
+                db.addMusicToDB(new Music(1,"Despacito","Lois Fancy", "Spanish", "Country", 300, "Alexa Play"));
+            }
+
             songs.reload(db);
 
             Adapter songAdapter = new Adapter(songs);
