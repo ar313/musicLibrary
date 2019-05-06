@@ -209,5 +209,19 @@ public class EntryActivity extends AppCompatActivity {
 
             rv.scrollToPosition(songs.getMusicArrayList().size()-1);
         }
+
+        if (requestCode == REQUEST_CODE_EDIT && resultCode == RESULT_FIRST_USER) {
+            songs.reload(db);
+
+            Adapter songAdapter = new Adapter(songs);
+
+
+            RecyclerView rv=findViewById(R.id.recycler);
+
+            rv.setAdapter(songAdapter);
+            rv.setLayoutManager(new LinearLayoutManager(this));
+
+            rv.scrollToPosition(songs.getMusicArrayList().size()-1);
+        }
     }
 }

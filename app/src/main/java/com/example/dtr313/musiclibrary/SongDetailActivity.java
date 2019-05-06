@@ -86,7 +86,7 @@ public class SongDetailActivity extends AppCompatActivity {
 
                 db.deleteMusic(song);
 
-               // setResult(RESULT_FIRST_USER, myIntent);
+               setResult(RESULT_FIRST_USER, myIntent);
 
                 finish();
             }
