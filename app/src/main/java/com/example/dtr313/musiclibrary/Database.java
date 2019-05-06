@@ -114,16 +114,16 @@ public class Database extends SQLiteOpenHelper {
         SQLiteDatabase musicDB = this.getWritableDatabase();
 
         String query = "DELETE FROM MusicLibrary WHERE id= " +music.getId() + ";";
-        String query2 = "SELECT * FROM MusicLibrary WHERE id>" +music.getId();
-
         musicDB.execSQL(query);
+
+        String query2 = "SELECT * FROM MusicLibrary WHERE id >= " +music.getId() +";";
         Cursor ptr = musicDB.rawQuery(query2, null);
 
         int cID = ptr.getColumnIndex("id");
 
         ptr.moveToFirst();
 
-        if ( ptr != null ) {
+        if ( ptr != null && ptr.getCount() >=1) {
             do {
                 int ID = ptr.getInt(cID)-1;
 
