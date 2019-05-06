@@ -23,6 +23,10 @@ public class SongDetailActivity extends AppCompatActivity {
     Button buttonSave;// = findViewById(R.id.songdetailSave);
     Button buttonEdit;// = findViewById(R.id.songdetailEdit);
     Button buttonDelete;
+
+    final int REQUEST_CODE_ADD = 13;
+    final int REQUEST_CODE_EDIT = 14;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -176,10 +180,16 @@ public class SongDetailActivity extends AppCompatActivity {
         if(to)
         {
             buttonSave.setVisibility(View.VISIBLE);
+
+            if(getIntent().getExtras().getInt("request") == REQUEST_CODE_EDIT)
+            {
+                buttonDelete.setVisibility(View.VISIBLE);
+            }
         }
         else
         {
             buttonSave.setVisibility(View.INVISIBLE);
+            buttonDelete.setVisibility(View.INVISIBLE);
         }
     }
 }

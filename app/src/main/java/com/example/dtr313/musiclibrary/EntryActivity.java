@@ -65,6 +65,7 @@ public class EntryActivity extends AppCompatActivity {
                 myIntent.putExtra("edit", true);
                 myIntent.putExtra("collection", songs);
                 myIntent.putExtra("song", song);
+                myIntent.putExtra("request", REQUEST_CODE_ADD);
 
                 startActivityForResult(myIntent, REQUEST_CODE_ADD);
             }

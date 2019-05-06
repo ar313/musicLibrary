@@ -92,6 +92,7 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
                 myIntent.putExtra("song", song);
                 myIntent.putExtra("edit", false);
                 myIntent.putExtra("collection", mCol);
+                myIntent.putExtra("request", REQUEST_CODE_EDIT);
 
                 ((Activity)v.getContext()).startActivityForResult(myIntent, REQUEST_CODE_EDIT);
 
