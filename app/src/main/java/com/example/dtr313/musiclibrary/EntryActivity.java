@@ -23,6 +23,8 @@ public class EntryActivity extends AppCompatActivity {
     final int REQUEST_CODE_ADD = 13;
     final int REQUEST_CODE_EDIT = 14;
 
+    MusicCollection songs;
+
 
 
     @Override
@@ -43,7 +45,7 @@ public class EntryActivity extends AppCompatActivity {
              db.addMusicToDB(new Music(1,"Despacito","Lois Fancy", "Spanish", "Country", 300, "Alexa Play"));
         }
 
-        final MusicCollection songs = new MusicCollection(db);
+        songs = new MusicCollection(db);
 
         final Adapter songAdapter = new Adapter(songs);
 
@@ -168,7 +170,7 @@ public class EntryActivity extends AppCompatActivity {
 
         Database db = new Database(EntryActivity.this);
 
-        final MusicCollection songs = new MusicCollection(db);
+        songs.reload(db);
 
 
 
