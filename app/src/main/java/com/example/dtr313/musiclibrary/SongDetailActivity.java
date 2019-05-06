@@ -22,7 +22,7 @@ public class SongDetailActivity extends AppCompatActivity {
 
     Button buttonSave;// = findViewById(R.id.songdetailSave);
     Button buttonEdit;// = findViewById(R.id.songdetailEdit);
-
+    Button buttonDelete;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,12 +32,7 @@ public class SongDetailActivity extends AppCompatActivity {
 
         final boolean isEdit = getIntent().getBooleanExtra("edit", true);
 
-
         final Music song = (Music)getIntent().getSerializableExtra("song");
-
-
-
-
 
         songName = findViewById(R.id.songdetailName);
         songAuthor = findViewById(R.id.songdetailAuthor);
@@ -50,7 +45,7 @@ public class SongDetailActivity extends AppCompatActivity {
 
         buttonSave = findViewById(R.id.songdetailSave);
         buttonEdit = findViewById(R.id.songdetailEdit);
-
+        buttonDelete = findViewById(R.id.songdetailDelete);
 
 
         if(song.getId() != 0)
@@ -83,6 +78,20 @@ public class SongDetailActivity extends AppCompatActivity {
             }
         });
 
+        buttonDelete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent myIntent = new Intent();
+                Database db = new Database(SongDetailActivity.this);
+
+                db.deleteMusic(song);
+
+               // setResult(RESULT_FIRST_USER, myIntent);
+
+                finish();
+            }
+        });
+
         buttonSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -102,10 +111,6 @@ public class SongDetailActivity extends AppCompatActivity {
                 {
                     duration = Integer.parseInt(songDuration.getText().toString());
                 }
-
-
-
-
 
                 if(isEdit)
                 {

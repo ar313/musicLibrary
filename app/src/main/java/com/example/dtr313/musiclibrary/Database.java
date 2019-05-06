@@ -61,7 +61,7 @@ public class Database extends SQLiteOpenHelper {
 
         ptr.moveToFirst();
 
-        if ( ptr != null ) {
+        if ( ptr != null && ptr.getCount()>=1 ) {
             do {
                 int ID = ptr.getInt(cID);
                 String Name = ptr.getString(cName);
@@ -108,5 +108,30 @@ public class Database extends SQLiteOpenHelper {
                 "' WHERE  id = " + music.getId() + ";";
 
         musicDB.execSQL(query);
+    }
+
+    public void deleteMusic(Music music) {
+        SQLiteDatabase musicDB = this.getWritableDatabase();
+
+        String query = "DELETE FROM MusicLibrary WHERE id= " +music.getId() + ";";
+        String query2 = "SELECT * FROM MusicLibrary WHERE id>" +music.getId();
+
+        musicDB.execSQL(query);
+        Cursor ptr = musicDB.rawQuery(query2, null);
+
+        int cID = ptr.getColumnIndex("id");
+
+        ptr.moveToFirst();
+
+        if ( ptr != null ) {
+            do {
+                int ID = ptr.getInt(cID)-1;
+
+                String updateQuery = "UPDATE MusicLibrary SET " + "id = " + ID + " WHERE id= " +ptr.getInt(cID) + ";";
+
+                musicDB.execSQL(updateQuery);
+            } while(ptr.moveToNext());
+        }
+
     }
 }
