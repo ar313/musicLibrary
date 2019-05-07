@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class SongDetailActivity extends AppCompatActivity {
 
@@ -100,64 +101,65 @@ public class SongDetailActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                Intent myIntent = new Intent();
-
-                int duration;
-
-                if(songDuration.getText().toString().contains(":"))
+                if(songName.getText().toString().isEmpty() || songAuthor.getText().toString().isEmpty() || songGenre.getText().toString().isEmpty())
                 {
-                    String buf[] = songDuration.getText().toString().split(":");
 
-                    duration = Integer.parseInt(buf[0]) * 60 + Integer.parseInt(buf[1]);
+                    Toast.makeText(SongDetailActivity.this,"Input song name, artist and genre before saving",Toast.LENGTH_LONG).show();
                 }
 
-                else
-                {
-                    duration = Integer.parseInt(songDuration.getText().toString());
-                }
+                else {
 
-                if(isEdit)
-                {
-                    song.setId(songs.getMusicArrayList().size() + 1);
-                    song.setName(songName.getText().toString());
-                    song.setArtist(songAuthor.getText().toString());
-                    song.setGenre(songGenre.getText().toString());
+                    Intent myIntent = new Intent();
 
+                    int duration;
 
-                    song.setDuration(duration);
+                    if (songDuration.getText().toString().contains(":")) {
+                        String buf[] = songDuration.getText().toString().split(":");
 
+                        duration = Integer.parseInt(buf[0]) * 60 + Integer.parseInt(buf[1]);
+                    } else {
+                        duration = Integer.parseInt(songDuration.getText().toString());
+                    }
 
-                    song.setDescription(songDescription.getText().toString());
-                    song.setAlbum(songAlbum.getText().toString());
-
-                    //songs.add(song);
-
-                    myIntent.putExtra("song", song);
-                    myIntent.putExtra("edit", true);
-
-                    setResult(RESULT_OK, myIntent);
-
-                    finish();
-                }
-
-                else
-                {
-                    song.setName(songName.getText().toString());
-                    song.setArtist(songAuthor.getText().toString());
-                    song.setGenre(songGenre.getText().toString());
-                    song.setDuration(duration);
-                    song.setDescription(songDescription.getText().toString());
-                    song.setAlbum(songAlbum.getText().toString());
+                    if (isEdit) {
+                        song.setId(songs.getMusicArrayList().size() + 1);
+                        song.setName(songName.getText().toString());
+                        song.setArtist(songAuthor.getText().toString());
+                        song.setGenre(songGenre.getText().toString());
 
 
-                    //songs.editMusic(song);
+                        song.setDuration(duration);
 
-                    myIntent.putExtra("song", song);
-                    myIntent.putExtra("edit", false);
 
-                    setResult(RESULT_OK, myIntent);
+                        song.setDescription(songDescription.getText().toString());
+                        song.setAlbum(songAlbum.getText().toString());
 
-                    finish();
+                        //songs.add(song);
+
+                        myIntent.putExtra("song", song);
+                        myIntent.putExtra("edit", true);
+
+                        setResult(RESULT_OK, myIntent);
+
+                        finish();
+                    } else {
+                        song.setName(songName.getText().toString());
+                        song.setArtist(songAuthor.getText().toString());
+                        song.setGenre(songGenre.getText().toString());
+                        song.setDuration(duration);
+                        song.setDescription(songDescription.getText().toString());
+                        song.setAlbum(songAlbum.getText().toString());
+
+
+                        //songs.editMusic(song);
+
+                        myIntent.putExtra("song", song);
+                        myIntent.putExtra("edit", false);
+
+                        setResult(RESULT_OK, myIntent);
+
+                        finish();
+                    }
                 }
 
             }
